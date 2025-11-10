@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About Us - Your Health Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .navbar {
+            background-color: #2E2E2E;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-brand, .nav-link {
+            color: white !important;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-link:hover {
+            background-color: #FFB6C1;
+            color: #333 !important;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin-top: 0;
+            margin-left: 2px;
+        }
+
+        .myimg {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #89CFF0;
+            border-radius: 25px;
+        }
+
+        h1, h3 {
+            color: #89CFF0 !important;
+            font-weight: 700;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .content-container {
+            background-color: #F9E7F2;
+            color: #333;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 2rem auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 1100px;
+        }
+
+        p {
+            color: #333;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .btn-speech {
+            background: linear-gradient(135deg, #89CFF0, #FFB6C1);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-left: 3px;
+        }
+
+        .btn-speech:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .content-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <div class="logo">
+                <img class="myimg" src="{{ url_for('static', filename='img.png') }}" alt="Logo">
+            </div>
+            <a class="navbar-brand" href="/">Your Health Guide</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/developer">Developer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/blog">Blog</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-speech" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container content-container">
+        <h1>About Us</h1>
+        <p>Welcome to Your Health Guide, where health meets technology for a brighter, healthier future.</p>
+        <h3>Our Vision</h3>
+        <p>We envision a world where access to healthcare information is not just a luxury but a fundamental right. Our journey began with a simple yet powerful idea: to empower individuals with the knowledge and tools they need to take control of their health.</p>
+        <h3>Who We Are</h3>
+        <p>We are a passionate team of healthcare professionals, data scientists, and technology enthusiasts who share a common goal: to make healthcare accessible, understandable, and personalized for you. With years of experience in both healthcare and cutting-edge technology, we've come together to create this platform as a testament to our commitment to your well-being.</p>
+        <h3>Our Mission</h3>
+        <p>At Your Health Guide, our mission is to provide you with a seamless and intuitive platform that leverages the power of artificial intelligence and machine learning. We want to assist you in identifying potential health concerns based on your reported symptoms, all while offering a wealth of educational resources to enhance your health literacy.</p>
+        <h3>How We Do It</h3>
+        <p>Our platform utilizes a robust machine learning model trained on a vast dataset of symptoms and diseases. By inputting your symptoms, our system generates accurate predictions about potential illnesses, allowing you to make informed decisions about your health.</p>
+        <h3>Your Well-being, Our Priority</h3>
+        <p>Your health is our top priority. We understand that navigating the complexities of healthcare can be daunting. That's why we've gone the extra mile to provide not only accurate predictions but also comprehensive information about each disease. You'll find descriptions, recommended precautions, medications, dietary advice, and workout tips to support your journey to better health.</p>
+        <h3>Join Us on this Journey</h3>
+        <p>We invite you to explore our platform, engage with our educational content, and take control of your health journey. Together, we can revolutionize the way individuals access and understand healthcare information.</p>
+        <p>Thank you for choosing Your Health Guide as your trusted health companion. We are here to empower you with knowledge, support, and a brighter, healthier future.</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog Post - Your Health Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .navbar {
+            background-color: #2E2E2E;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-brand, .nav-link {
+            color: white !important;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-link:hover {
+            background-color: #FFB6C1;
+            color: #333 !important;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin-top: 0;
+            margin-left: 2px;
+        }
+
+        .myimg {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #89CFF0;
+            border-radius: 25px;
+        }
+
+        h1, h2, h3 {
+            color: #89CFF0 !important;
+            font-weight: 700;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .content-container {
+            background-color: #F9E7F2;
+            color: #333;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 2rem auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 1100px;
+        }
+
+        p, li {
+            color: #333;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 1rem;
+        }
+
+        .btn-speech {
+            background: linear-gradient(135deg, #89CFF0, #FFB6C1);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-left: 3px;
+        }
+
+        .btn-speech:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .content-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <div class="logo">
+                <img class="myimg" src="{{ url_for('static', filename='img.png') }}" alt="Logo">
+            </div>
+            <a class="navbar-brand" href="/">Your Health Guide</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/developer">Developer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/blog">Blog</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-speech" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container content-container">
+        <h2>Building a Symptom-Based Disease Diagnosis Web App with Flask and Machine Learning</h2>
+        <p>In the age of technology and information, access to accurate and timely healthcare is more critical than ever. With the increasing importance of remote healthcare solutions, we embarked on a journey to develop a symptom-based disease diagnosis web application. Leveraging Flask for the backend and a Decision Tree Classifier model, we created a user-friendly platform that can help users identify potential illnesses based on their reported symptoms.</p>
+        <h3>The Problem</h3>
+        <p>The project began with recognizing a common issue: people often experience symptoms and want quick answers about their health concerns. It can be challenging to differentiate between various diseases, especially when symptoms overlap. Our goal was to provide a convenient solution for users to input their symptoms and receive potential diagnoses.</p>
+        <h3>The Solution</h3>
+        <p>We developed a web app that allows users to enter a list of symptoms they are experiencing. The app then uses a pre-trained Decision Tree Classifier model to predict the most likely disease based on the provided symptoms. Here's how it works:</p>
+        <ol>
+            <li><strong>Symptom Input:</strong> Users enter their symptoms through a user-friendly interface. The web app supports a wide range of symptoms, making it versatile for different scenarios.</li>
+            <li><strong>Machine Learning Model:</strong> We trained a Decision Tree Classifier using a dataset containing symptoms and corresponding diseases. The model is capable of predicting diseases based on input symptoms.</li>
+            <li><strong>Prediction:</strong> The app uses the model to predict the most likely disease, providing users with instant information about potential health concerns.</li>
+            <li><strong>Additional Information:</strong> To enhance user experience, the app also provides additional information about the predicted disease. This includes a description of the disease, recommended precautions, medications, dietary advice, and workout tips.</li>
+        </ol>
+        <h3>Key Features</h3>
+        <ul>
+            <li><strong>User-Friendly Interface:</strong> The web app boasts an intuitive and easy-to-navigate interface, ensuring that users can input their symptoms without any hassle.</li>
+            <li><strong>Accurate Predictions:</strong> Leveraging machine learning, our model provides accurate disease predictions based on the symptoms provided by the user.</li>
+            <li><strong>Comprehensive Information:</strong> In addition to predictions, the app offers comprehensive information about the predicted disease, including descriptions, precautions, medications, diet recommendations, and workout tips.</li>
+            <li><strong>Educational Content:</strong> To empower users with knowledge, the app includes informative blog posts about various health topics.</li>
+        </ul>
+        <h3>Conclusion</h3>
+        <p>Our Symptom-Based Disease Diagnosis Web App brings the power of machine learning and healthcare information to the fingertips of users. It serves as a valuable resource for individuals looking to gain insights into their health conditions quickly and conveniently. By combining technology and healthcare, we aim to make healthcare more accessible and user-centric. In an era where remote healthcare solutions are gaining prominence, this project represents a significant step forward in providing accessible and reliable healthcare information to the masses. We hope that this project will contribute to better health awareness and ultimately improve the well-being of individuals worldwide.</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Us - Your Health Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .navbar {
+            background-color: #2E2E2E;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-brand, .nav-link {
+            color: white !important;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-link:hover {
+            background-color: #FFB6C1;
+            color: #333 !important;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin-top: 0;
+            margin-left: 2px;
+        }
+
+        .myimg {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #89CFF0;
+            border-radius: 25px;
+        }
+
+        h1, h4 {
+            color: #89CFF0 !important;
+            font-weight: 700;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .content-container {
+            background-color: #F9E7F2;
+            color: #333;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 2rem auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 1100px;
+        }
+
+        p {
+            color: #333;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .btn-speech {
+            background: linear-gradient(135deg, #89CFF0, #FFB6C1);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-left: 3px;
+        }
+
+        .btn-speech:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .content-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <div class="logo">
+                <img class="myimg" src="{{ url_for('static', filename='img.png') }}" alt="Logo">
+            </div>
+            <a class="navbar-brand" href="/">Your Health Guide</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/developer">Developer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/blog">Blog</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-speech" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container content-container">
+        <h1>Contact Us</h1>
+        <p>We'd love to hear from you! Whether you have a question about our platform, need assistance, or just want to share your thoughts, feel free to reach out to us.</p>
+        <h4>Email</h4>
+        <p>You can email us at <a href="mailto:support@yourhealthguide.com">support@yourhealthguide.com</a> for any inquiries or support.</p>
+        <h4>Phone</h4>
+        <p>Call us at (123) 456-7890. Our support team is available Monday to Friday, 9 AM to 5 PM.</p>
+        <h4>Address</h4>
+        <p>Visit us at:</p>
+        <p>Your Health Guide<br>123 Health St.<br>Wellness City, HC 12345</p>
+        <h4>Social Media</h4>
+        <p>Follow us on social media for the latest updates and health tips:</p>
+        <ul>
+            <li><a href="https://www.facebook.com/yourhealthguide" target="_blank">Facebook</a></li>
+            <li><a href="https://www.twitter.com/yourhealthguide" target="_blank">Twitter</a></li>
+            <li><a href="https://www.instagram.com/yourhealthguide" target="_blank">Instagram</a></li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Developer - Your Health Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .navbar {
+            background-color: #2E2E2E;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-brand, .nav-link {
+            color: white !important;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-link:hover {
+            background-color: #FFB6C1;
+            color: #333 !important;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin-top: 0;
+            margin-left: 2px;
+        }
+
+        .myimg {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #89CFF0;
+            border-radius: 25px;
+        }
+
+        h1, h5, h6 {
+            color: #89CFF0 !important;
+            font-weight: 700;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .content-container {
+            background-color: #F9E7F2;
+            color: #333;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 2rem auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 1100px;
+        }
+
+        p {
+            color: #333;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .btn-speech {
+            background: linear-gradient(135deg, #89CFF0, #FFB6C1);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-left: 3px;
+        }
+
+        .btn-speech:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .content-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <div class="logo">
+                <img class="myimg" src="{{ url_for('static', filename='img.png') }}" alt="Logo">
+            </div>
+            <a class="navbar-brand" href="/">Your Health Guide</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/developer">Developer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/blog">Blog</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-speech" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container content-container">
+        <h1>About AI AVENGERS: Your Health Tracker</h1>
+        <h5>Meet the Developer</h5>
+        <p>Hello, We are AI AVENGERS, your personal Health and Fitness tracking application. We are passionate about harnessing the power of technology to make a positive impact on people's lives. Allow us to share a bit about our journey in the world of artificial intelligence and machine learning.</p>
+        <h5>Our Expertise</h5>
+        <p>With a huge interest towards computer programming and a deep fascination for AI and ML, We embarked on a journey that has taken us to learn various things about computer programming, AI, and ML.</p>
+        <h5>A Commitment to Excellence</h5>
+        <p>Our work is driven by a commitment to excellence and a belief that technology should be accessible and beneficial to everyone. Whether it's developing predictive models, creating intelligent algorithms, or designing user-friendly interfaces, I strive for solutions that are both cutting-edge and user-centric.</p>
+        <h5>Passion for Health Tech</h5>
+        <p>The development of YOUR HEALTH GUIDE represents a convergence of our passion for AI and my dedication to improving healthcare accessibility. We believe that AI has the potential to transform the way we approach healthcare, making it more personalized and informative. This platform is a testament to that vision.</p>
+        <h5>Join Us on this Journey</h5>
+        <p>We invite you to explore YOUR HEALTH GUIDE and experience firsthand the fusion of AI and healthcare. Together, we can empower individuals with knowledge, promote well-being, and contribute to a brighter and healthier future.</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediCare - Your Healthcare Solution</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #F9FAFB 0%, #DBEAFE 100%);
+      color: #1F2937;
+      min-height: 100vh;
+    }
+
+    nav {
+      background: linear-gradient(90deg, #A5B4FC, #93C5FD);
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav h1 {
+      color: white;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    nav .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    nav .nav-links a:hover {
+      background-color: #F9A8D4;
+      color: #1F2937;
+      transform: scale(1.05);
+    }
+
+    .section {
+      display: none;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      animation: fadeIn 0.6s ease-in;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section h2 {
+      color: #F9A8D4;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .section .emoji-header {
+      font-size: 3.5rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #F9A8D4, #A5B4FC);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .card {
+      background: #F9FAFB;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #F9A8D4, #A5B4FC);
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #F9A8D4;
+      margin-bottom: 1rem;
+    }
+
+    input, select, textarea, button {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 2px solid #E5E7EB;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #F9A8D4;
+      box-shadow: 0 0 0 3px rgba(249, 168, 212, 0.2);
+    }
+
+    button {
+      background: linear-gradient(90deg, #F9A8D4, #F472B6);
+      color: #1F2937;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(90deg, #F472B6, #EC4899);
+    }
+
+    .secondary-btn {
+      background: linear-gradient(90deg, #A5B4FC, #93C5FD);
+      color: white;
+    }
+
+    .secondary-btn:hover {
+      background: linear-gradient(90deg, #93C5FD, #818CF8);
+      transform: scale(1.05);
+    }
+
+    .toggle-btn {
+      background: none;
+      border: none;
+      color: #F9A8D4;
+      font-weight: 500;
+      text-decoration: underline;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: color 0.3s;
+    }
+
+    .toggle-btn:hover {
+      color: #A5B4FC;
+    }
+
+    .form-container {
+      position: relative;
+      transition: all 0.5s ease;
+    }
+
+    .form-container .form {
+      display: none;
+    }
+
+    .form-container .form.active {
+      display: block;
+    }
+
+    .emergency-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .emergency-options button {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .chatbot {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: #A5B4FC;
+      color: #1F2937;
+      width: 320px;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      display: none;
+      z-index: 1000;
+    }
+
+    .chatbot.active {
+      display: block;
+    }
+
+    .chatbot .nav-menu {
+      display: none;
+      margin-top: 1rem;
+    }
+
+    .chatbot .nav-menu.active {
+      display: block;
+    }
+
+    .chatbot .nav-menu button {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, #F9A8D4, #A5B4FC);
+      padding: 0.5rem;
+      font-size: 0.9rem;
+      color: #1F2937;
+      border-radius: 0.5rem;
+      width: 100%;
+      text-align: left;
+    }
+
+    .chatbot .nav-menu button:hover {
+      background: linear-gradient(90deg, #F472B6, #93C5FD);
+      transform: scale(1.05);
+    }
+
+    .doctor-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background: #DBEAFE;
+      border-radius: 0.5rem;
+      margin-bottom: 0.75rem;
+      transition: transform 0.2s;
+    }
+
+    .doctor-list li:hover {
+      transform: translateX(5px);
+    }
+
+    .faq-item {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: #DBEAFE;
+      border-radius: 0.5rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .contact-info a, .contact-info p {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #F9A8D4;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-info a:hover {
+      color: #A5B4FC;
+    }
+
+    .payment-options {
+      margin-top: 1rem;
+    }
+
+    .payment-form {
+      display: none;
+      margin-top: 1rem;
+      padding: 1rem;
+      background: #F9FAFB;
+      border-radius: 0.5rem;
+    }
+
+    .payment-form.active {
+      display: block;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.5rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      nav .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 1rem;
+      }
+
+      nav .nav-links.active {
+        display: flex;
+      }
+
+      nav .nav-links a {
+        margin: 0.5rem 0;
+        text-align: center;
+      }
+
+      .chatbot {
+        width: 90%;
+        max-width: 300px;
+      }
+
+      .section h2 {
+        font-size: 2rem;
+      }
+
+      .emoji-header {
+        font-size: 2.5rem;
+      }
+
+      .emergency-options button {
+        min-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav id="navbar" style="display: none;">
+    <div class="container">
+      <h1>MediCare</h1>
+      <i class="fas fa-bars hamburger" onclick="toggleNav()"></i>
+      <div class="nav-links" id="nav-links">
+        <a href="#" onclick="showSection('home'); return false;"><i class="fas fa-home"></i> Home</a>
+        <a href="#" onclick="showSection('disease'); return false;"><i class="fas fa-stethoscope"></i> Disease Prediction</a>
+        <a href="#" onclick="showSection('consult'); return false;"><i class="fas fa-user-md"></i> Consult Specialist</a>
+        <a href="#" onclick="showSection('appointment'); return false;"><i class="fas fa-calendar-alt"></i> Book Appointment</a>
+        <a href="#" onclick="showSection('medicine'); return false;"><i class="fas fa-pills"></i> Order Medicine</a>
+        <a href="#" onclick="showSection('faq'); return false;"><i class="fas fa-question-circle"></i> FAQ</a>
+        <a href="#" onclick="showSection('emergency'); return false;"><i class="fas fa-ambulance"></i> Emergency</a>
+        <a href="#" onclick="showSection('about'); return false;"><i class="fas fa-info-circle"></i> About</a>
+        <a href="#" onclick="logout(); return false;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <div id="login" class="section active">
+    <div class="emoji-header">🔒</div>
+    <div class="card" style="max-width: 450px; margin: 3rem auto;">
+      <h2><i class="fas fa-user-lock"></i> Login to MediCare</h2>
+      <div class="form-container">
+        <!-- Login Form -->
+        <div id="login-form" class="form active">
+          <input type="text" id="login-username" placeholder="Username">
+          <input type="password" id="login-password" placeholder="Password">
+          <button onclick="login()">Login</button>
+          <button class="toggle-btn" onclick="showSignUpForm()">Don't have an account? Sign Up</button>
+        </div>
+        <!-- Sign Up Form -->
+        <div id="signup-form" class="form">
+          <h2><i class="fas fa-user-plus"></i> Sign Up for MediCare</h2>
+          <input type="text" id="signup-username" placeholder="Username">
+          <input type="email" id="signup-email" placeholder="Email">
+          <input type="password" id="signup-password" placeholder="Password">
+          <input type="password" id="signup-confirm-password" placeholder="Confirm Password">
+          <button onclick="signUp()">Sign Up</button>
+          <button class="toggle-btn" onclick="showLoginForm()">Already have an account? Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="home" class="section">
+    <div class="emoji-header">🏥</div>
+    <h2>Welcome to MediCare</h2>
+    <div class="card">
+      <p>Your one-stop solution for all healthcare needs. Explore our services or chat with our bot for guidance!</p>
+      <button onclick="toggleChatBot()" class="secondary-btn"><i class="fas fa-robot"></i> Open ChatBot</button>
+    </div>
+  </div>
+
+  <div id="disease" class="section">
+    <div class="emoji-header">🩺</div>
+    <h2>Disease Prediction</h2>
+    <div class="card">
+      <h3><i class="fas fa-diagnoses"></i> Enter Your Symptoms</h3>
+      <textarea placeholder="Describe your symptoms..." rows="5"></textarea>
+      <button>Predict Disease</button>
+    </div>
+  </div>
+
+  <div id="consult" class="section">
+    <div class="emoji-header">👨‍⚕️</div>
+    <h2>Consult a Specialist</h2>
+    <div class="card">
+      <h3><i class="fas fa-stethoscope"></i> Select Disease</h3>
+      <select>
+        <option>Cardiology</option>
+        <option>Neurology</option>
+        <option>Orthopedics</option>
+      </select>
+      <button onclick="showSection('appointment')">Find Specialist</button>
+    </div>
+  </div>
+
+  <div id="appointment" class="section">
+    <div class="emoji-header">📅</div>
+    <h2>Book an Appointment</h2>
+    <div class="card">
+      <h3><i class="fas fa-map-marker-alt"></i> Select Location</h3>
+      <select id="location" onchange="showDoctors()">
+        <option value="">Select Location</option>
+        <option value="new-york">New York</option>
+        <option value="los-angeles">Los Angeles</option>
+        <option value="chicago">Chicago</option>
+      </select>
+      <div id="doctor-list" style="display: none;">
+        <h3>Available Doctors</h3>
+        <ul class="doctor-list">
+          <li><i class="fas fa-user-md"></i> Dr. John Doe - Cardiologist <button onclick="showPaymentForm('offline', 'appointment')">Book</button></li>
+          <li><i class="fas fa-user-md"></i> Dr. Jane Smith - Neurologist <button onclick="showPaymentForm('offline', 'appointment')">Book</button></li>
+        </ul>
+        <button class="secondary-btn" onclick="showPaymentForm('online', 'appointment')">Book Online Consultation</button>
+        <div class="payment-options" id="appointment-payment">
+          <h3><i class="fas fa-credit-card"></i> Payment Options</h3>
+          <select id="appointment-payment-method" onchange="showPaymentDetails('appointment')">
+            <option value="">Select Payment Method</option>
+            <option value="card">Credit/Debit Card</option>
+            <option value="upi">UPI</option>
+            <option value="netbanking">Net Banking</option>
+          </select>
+          <div id="appointment-card-payment" class="payment-form">
+            <input type="text" placeholder="Card Number">
+            <input type="text" placeholder="Expiry Date (MM/YY)">
+            <input type="text" placeholder="CVV">
+            <button onclick="processPayment('appointment')">Pay Now</button>
+          </div>
+          <div id="appointment-upi-payment" class="payment-form">
+            <input type="text" placeholder="UPI ID (e.g., name@bank)">
+            <button onclick="processPayment('appointment')">Pay Now</button>
+          </div>
+          <div id="appointment-netbanking-payment" class="payment-form">
+            <select>
+              <option value="">Select Bank</option>
+              <option value="bank1">Bank of America</option>
+              <option value="bank2">Chase Bank</option>
+              <option value="bank3">Wells Fargo</option>
+            </select>
+            <button onclick="processPayment('appointment')">Pay Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="medicine" class="section">
+    <div class="emoji-header">💊</div>
+    <h2>Order Medicine</h2>
+    <div class="card">
+      <h3><i class="fas fa-prescription-bottle-alt"></i> Prescription Details</h3>
+      <input type="file">
+      <input type="text" placeholder="Pin Code">
+      <input type="text" placeholder="Address">
+      <input type="text" placeholder="Contact Number">
+      <input type="email" placeholder="Email">
+      <button onclick="showPaymentForm('medicine', 'medicine')">Order Medicine</button>
+      <div class="payment-options" id="medicine-payment">
+        <h3><i class="fas fa-credit-card"></i> Payment Options</h3>
+        <select id="medicine-payment-method" onchange="showPaymentDetails('medicine')">
+          <option value="">Select Payment Method</option>
+          <option value="card">Credit/Debit Card</option>
+          <option value="upi">UPI</option>
+          <option value="netbanking">Net Banking</option>
+        </select>
+        <div id="medicine-card-payment" class="payment-form">
+          <input type="text" placeholder="Card Number">
+          <input type="text" placeholder="Expiry Date (MM/YY)">
+          <input type="text" placeholder="CVV">
+          <button onclick="processPayment('medicine')">Pay Now</button>
+        </div>
+        <div id="medicine-upi-payment" class="payment-form">
+          <input type="text" placeholder="UPI ID (e.g., name@bank)">
+          <button onclick="processPayment('medicine')">Pay Now</button>
+        </div>
+        <div id="medicine-netbanking-payment" class="payment-form">
+          <select>
+            <option value="">Select Bank</option>
+            <option value="bank1">Bank of America</option>
+            <option value="bank2">Chase Bank</option>
+            <option value="bank3">Wells Fargo</option>
+          </select>
+          <button onclick="processPayment('medicine')">Pay Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="faq" class="section">
+    <div class="emoji-header">❓</div>
+    <h2>Frequently Asked Questions</h2>
+    <div class="card">
+      <h3><i class="fas fa-question-circle"></i> Common Queries</h3>
+      <div class="faq-item">
+        <h4 style="font-weight: 600;">How do I book an appointment?</h4>
+        <p>Navigate to the "Book Appointment" section, select your location, choose a doctor, and complete payment via card, UPI, or net banking.</p>
+      </div>
+      <div class="faq-item">
+        <h4 style="font-weight: 600;">Can I order medicines without a prescription?</h4>
+        <p>A valid prescription is required to order medicines through our platform.</p>
+      </div>
+      <div class="faq-item">
+        <h4 style="font-weight: 600;">How does the disease prediction work?</h4>
+        <p>Enter your symptoms in the Disease Prediction section, and our system will analyze them to suggest possible conditions.</p>
+      </div>
+      <div class="faq-item">
+        <h4 style="font-weight: 600;">Can I cancel an appointment?</h4>
+        <p>Yes, appointments can be canceled through the Book Appointment section by contacting support.</p>
+      </div>
+      <div class="faq-item">
+        <h4 style="font-weight: 600;">Is my data secure?</h4>
+        <p>We use advanced encryption to protect your personal and medical information.</p>
+      </div>
+      <div class="faq-item">
+        <h4 style="font-weight: 600;">How do I access emergency consultations?</h4>
+        <p>Go to the "Emergency" section to connect with a doctor via chat, voice call, or video call for urgent care.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="emergency" class="section">
+    <div class="emoji-header">🚨</div>
+    <h2>Emergency Consultation</h2>
+    <div class="card">
+      <h3><i class="fas fa-ambulance"></i> Connect with a Doctor Now</h3>
+      <p>Need urgent care? Choose an option below to consult a doctor immediately.</p>
+      <div class="emergency-options">
+        <button onclick="startEmergencyConsultation('chat')"><i class="fas fa-comment"></i> Start Chat</button>
+        <button onclick="startEmergencyConsultation('voice')"><i class="fas fa-phone"></i> Voice Call</button>
+        <button onclick="startEmergencyConsultation('video')"><i class="fas fa-video"></i> Video Call</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="about" class="section">
+    <div class="emoji-header">ℹ️</div>
+    <h2>About MediCare</h2>
+    <div class="card">
+      <h3><i class="fas fa-info-circle"></i> Our Mission</h3>
+      <p>MediCare is dedicated to providing accessible, reliable, and comprehensive healthcare services. From disease prediction to specialist consultations and medicine delivery, we aim to make healthcare seamless and convenient.</p>
+      <h3 style="margin-top: 1.5rem;"><i class="fas fa-address-book"></i> Contact Us</h3>
+      <div class="contact-info">
+        <p><i class="fas fa-envelope"></i> Email: support@medicare.com</p>
+        <p><i class="fas fa-phone"></i> Phone: +1-800-555-1234</p>
+        <a href="https://twitter.com/medicare" target="_blank"><i class="fab fa-twitter"></i> Twitter: @Medicare</a>
+        <a href="https://facebook.com/medicare" target="_blank"><i class="fab fa-facebook"></i> Facebook: /Medicare</a>
+        <a href="https://instagram.com/medicare" target="_blank"><i class="fab fa-instagram"></i> Instagram: @Medicare</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="chatbot" class="chatbot">
+    <h3><i class="fas fa-robot"></i> MediCare ChatBot</h3>
+    <div style="margin-bottom: 1rem;">
+      <p><strong>Bot:</strong> Welcome! How can I help you use MediCare?</p>
+      <p>Use the menu below to navigate or ask for guidance!</p>
+    </div>
+    <button onclick="toggleChatMenu()" class="secondary-btn"><i class="fas fa-bars"></i> Navigation Menu</button>
+    <div class="nav-menu" id="chat-nav">
+      <button onclick="showSection('home')"><i class="fas fa-home"></i> Home</button>
+      <button onclick="showSection('disease')"><i class="fas fa-stethoscope"></i> Disease Prediction</button>
+      <button onclick="showSection('consult')"><i class="fas fa-user-md"></i> Consult Specialist</button>
+      <button onclick="showSection('appointment')"><i class="fas fa-calendar-alt"></i> Book Appointment</button>
+      <button onclick="showSection('medicine')"><i class="fas fa-pills"></i> Order Medicine</button>
+      <button onclick="showSection('faq')"><i class="fas fa-question-circle"></i> FAQ</button>
+      <button onclick="showSection('emergency')"><i class="fas fa-ambulance"></i> Emergency</button>
+      <button onclick="showSection('about')"><i class="fas fa-info-circle"></i> About</button>
+      <button onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+    <button onclick="closeChatBot()">Close</button>
+  </div>
+
+  <script>
+    // Simulated user database (for demo purposes)
+    let registeredUsers = [];
+
+    function showSection(sectionId) {
+      // Hide all sections
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+      });
+      // Show the selected section
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.classList.add('active');
+      }
+      // Show/hide navbar
+      document.getElementById('navbar').style.display = sectionId === 'login' ? 'none' : 'block';
+      // Close chatbot and its menu
+      closeChatBot();
+      // Reset hamburger menu
+      const navLinks = document.getElementById('nav-links');
+      if (navLinks) {
+        navLinks.classList.remove('active');
+      }
+      // Reset payment forms if applicable
+      if (sectionId === 'appointment') {
+        resetPaymentForm('appointment');
+      }
+      if (sectionId === 'medicine') {
+        resetPaymentForm('medicine');
+      }
+      // Reset login and signup forms
+      if (sectionId === 'login') {
+        resetForms();
+      }
+    }
+
+    function closeChatBot() {
+      const chatbot = document.getElementById('chatbot');
+      const chatNav = document.getElementById('chat-nav');
+      if (chatbot && chatNav) {
+        chatbot.classList.remove('active');
+        chatNav.classList.remove('active');
+      }
+    }
+
+    function showLoginForm() {
+      document.getElementById('login-form').classList.add('active');
+      document.getElementById('signup-form').classList.remove('active');
+      resetForms();
+    }
+
+    function showSignUpForm() {
+      document.getElementById('signup-form').classList.add('active');
+      document.getElementById('login-form').classList.remove('active');
+      resetForms();
+    }
+
+    function resetForms() {
+      // Reset login form
+      document.getElementById('login-username').value = '';
+      document.getElementById('login-password').value = '';
+      // Reset signup form
+      document.getElementById('signup-username').value = '';
+      document.getElementById('signup-email').value = '';
+      document.getElementById('signup-password').value = '';
+      document.getElementById('signup-confirm-password').value = '';
+    }
+
+    function login() {
+      const username = document.getElementById('login-username').value;
+      const password = document.getElementById('login-password').value;
+      if (!username || !password) {
+        alert('Please enter username and password');
+        return;
+      }
+      // Check if user exists in registeredUsers
+      const user = registeredUsers.find(user => user.username === username && user.password === password);
+      if (user) {
+        showSection('home');
+      } else {
+        alert('Invalid username or password. Please sign up first.');
+        showSignUpForm();
+      }
+    }
+
+    function signUp() {
+      const username = document.getElementById('signup-username').value;
+      const email = document.getElementById('signup-email').value;
+      const password = document.getElementById('signup-password').value;
+      const confirmPassword = document.getElementById('signup-confirm-password').value;
+
+      // Basic validation
+      if (!username || !email || !password || !confirmPassword) {
+        alert('Please fill in all fields');
+        return;
+      }
+
+      // Email format validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address');
+        return;
+      }
+
+      // Password match validation
+      if (password !== confirmPassword) {
+        alert('Passwords do not match');
+        return;
+      }
+
+      // Password length validation
+      if (password.length < 6) {
+        alert('Password must be at least 6 characters long');
+        return;
+      }
+
+      // Check if username or email already exists
+      if (registeredUsers.some(user => user.username === username)) {
+        alert('Username already taken');
+        return;
+      }
+      if (registeredUsers.some(user => user.email === email)) {
+        alert('Email already registered');
+        return;
+      }
+
+      // Add user to registeredUsers
+      registeredUsers.push({ username, email, password });
+      alert('Sign-up successful! Please login.');
+      showLoginForm();
+    }
+
+    function logout() {
+      showSection('login');
+    }
+
+    function toggleChatBot() {
+      const chatbot = document.getElementById('chatbot');
+      chatbot.classList.toggle('active');
+      document.getElementById('chat-nav').classList.remove('active');
+    }
+
+    function toggleChatMenu() {
+      const chatNav = document.getElementById('chat-nav');
+      chatNav.classList.toggle('active');
+    }
+
+    function showDoctors() {
+      const location = document.getElementById('location').value;
+      const doctorList = document.getElementById('doctor-list');
+      doctorList.style.display = location ? 'block' : 'none';
+      resetPaymentForm('appointment');
+    }
+
+    function showPaymentForm(type, context) {
+      const paymentOptions = document.getElementById(`${context}-payment`);
+      paymentOptions.style.display = 'block';
+      document.getElementById(`${context}-payment-method`).value = '';
+      document.querySelectorAll(`#${context}-payment .payment-form`).forEach(form => {
+        form.classList.remove('active');
+      });
+      alert(`Selected ${type === 'online' ? 'Online Consultation' : type === 'medicine' ? 'Medicine Order' : 'Offline Appointment'}`);
+    }
+
+    function showPaymentDetails(context) {
+      const method = document.getElementById(`${context}-payment-method`).value;
+      document.querySelectorAll(`#${context}-payment .payment-form`).forEach(form => {
+        form.classList.remove('active');
+      });
+      if (method) {
+        document.getElementById(`${context}-${method}-payment`).classList.add('active');
+      }
+    }
+
+    function processPayment(context) {
+      const method = document.getElementById(`${context}-payment-method`).value;
+      if (!method) {
+        alert('Please select a payment method');
+        return;
+      }
+      alert('Payment processed successfully!');
+      resetPaymentForm(context);
+    }
+
+    function resetPaymentForm(context) {
+      const paymentOptions = document.getElementById(`${context}-payment`);
+      paymentOptions.style.display = 'none';
+      document.querySelectorAll(`#${context}-payment .payment-form`).forEach(form => {
+        form.classList.remove('active');
+      });
+      document.getElementById(`${context}-payment-method`).value = '';
+    }
+
+    function toggleNav() {
+      const navLinks = document.getElementById('nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    function startEmergencyConsultation(type) {
+      alert(`Initiating ${type} consultation with a doctor. Please wait...`);
+      // Placeholder for actual implementation (e.g., WebRTC for video/voice, WebSocket for chat)
+    }
+  </script>
+</body>
+</html>
